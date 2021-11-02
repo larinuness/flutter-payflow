@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'app_widget.dart';
 
-
 void main() {
   runApp(const AppFirebase());
 }
@@ -35,7 +34,7 @@ class _AppFirebaseState extends State<AppFirebase> {
             ),
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return const AppWidget();
+          return AppWidget();
         } else {
           // Otherwise, show something whilst waiting for initialization to complete
           return const Material(
