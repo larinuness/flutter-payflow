@@ -72,23 +72,28 @@ class _HomePageState extends State<HomePage> {
                 controller.setPage(0);
                 setState(() {});
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.home,
-                color: AppColors.primary,
+                color: controller.currentPage == 0
+                    ? AppColors.primary
+                    : AppColors.body,
               ),
             ),
-            Container(
-              height: 56,
-              width: 56,
-              decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(5)),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/barcode_scanner');
-                },
-                icon: const Icon(Icons.add_box_outlined,
-                    color: AppColors.background),
+            GestureDetector(
+              onTap: () async {
+                await Navigator.pushNamed(context, "/insert_boleto");
+                setState(() {});
+              },
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(5)),
+                child: const Icon(
+                  Icons.add_box_outlined,
+                  color: AppColors.background,
+                ),
               ),
             ),
             IconButton(
@@ -96,8 +101,11 @@ class _HomePageState extends State<HomePage> {
                 controller.setPage(1);
                 setState(() {});
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.description_outlined,
+                color: controller.currentPage == 1
+                    ? AppColors.primary
+                    : AppColors.body,
               ),
             ),
           ],

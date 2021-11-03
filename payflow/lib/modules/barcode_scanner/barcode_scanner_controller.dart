@@ -8,6 +8,7 @@ import 'barcode_scanner_status.dart';
 
 class BarcodeScannerController {
   //ValueNotifier é um gerenciador de estados
+  //sempre que tiver alteração, passa pra view
   final statusNotifier =
       ValueNotifier<BarcodeScannerStatus>(BarcodeScannerStatus());
   BarcodeScannerStatus get status => statusNotifier.value;
@@ -28,6 +29,7 @@ class BarcodeScannerController {
           (element) => element.lensDirection == CameraLensDirection.back);
       cameraController =
           CameraController(camera, ResolutionPreset.max, enableAudio: false);
+      //inicia a camera
       await cameraController!.initialize();
       scanWithCamera();
       listenCamera();
@@ -127,6 +129,8 @@ class BarcodeScannerController {
     }
   }
 
+  //finaliza os processos
+  //todo mundo que ouve ele tbm
   void dispose() {
     statusNotifier.dispose();
     barcodeScanner.close();
