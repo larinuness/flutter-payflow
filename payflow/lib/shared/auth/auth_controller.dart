@@ -5,8 +5,6 @@ import '../models/user_model.dart';
 
 class AuthController {
   //var que diz se está logado ou não
-  // ignore: unused_field
-  var _isAuthenticated = false;
   UserModel? _user;
 
   //devolve o userm, mantém instancia unica, só que usa a função setUser
@@ -18,12 +16,10 @@ class AuthController {
       saveUser(user);
       //salvar user no user
       _user = user;
-      _isAuthenticated = true;
       //coloca na home e remove o sinal de volta
-      Navigator.restorablePushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home', arguments: user);
     } else {
-      _isAuthenticated = false;
-      Navigator.restorablePushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/login');
     }
   }
 
