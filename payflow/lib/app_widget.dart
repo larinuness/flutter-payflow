@@ -9,13 +9,13 @@ import 'shared/models/user_model.dart';
 import 'shared/themes/app_colors.dart';
 
 class AppWidget extends StatelessWidget {
-  AppWidget() {
+  AppWidget({Key? key}) : super(key: key) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: AppColors.background));
+        const SystemUiOverlayStyle(statusBarColor: AppColors.background));
   }
   @override
   Widget build(BuildContext context) {
@@ -25,12 +25,12 @@ class AppWidget extends StatelessWidget {
           primarySwatch: Colors.orange, primaryColor: AppColors.primary),
       initialRoute: "/splash",
       routes: {
-        "/splash": (context) => SplashPage(),
+        "/splash": (context) => const SplashPage(),
         "/home": (context) => HomePage(
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
             ),
-        "/login": (context) => LoginPage(),
-        "/barcode_scanner": (context) => BarcodeScannerPage(),
+        "/login": (context) => const LoginPage(),
+        "/barcode_scanner": (context) => const BarcodeScannerPage(),
         "/insert_boleto": (context) => InsertBoletoPage(
             barcode: ModalRoute.of(context) != null
                 ? ModalRoute.of(context)!.settings.arguments.toString()

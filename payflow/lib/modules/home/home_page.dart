@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                     style: TextStyles.titleRegular,
                     children: [
                       TextSpan(
-                          text: "${widget.user.name}",
+                          text: widget.user.name,
                           style: TextStyles.titleBoldBackground)
                     ]),
               ),
